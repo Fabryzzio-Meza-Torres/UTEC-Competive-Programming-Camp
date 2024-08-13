@@ -2,6 +2,10 @@
 using namespace std;
 
 int main(){
+freopen("input.in","r",stdin);
+ios_base::sync_with_stdio(0);
+cin.tie(0);
+
 int Q,K,E;
 cin>>Q>>K;
 unordered_map<string,int>mapita;
@@ -16,17 +20,7 @@ for(int i=0;i<Q;i++){
     mapita[name]+=cost;
 }
 
-for(int i=0;i<min(K,int(mapita.size()));i++){
-    for(const auto& par: mapita){
-        if(par.second>big){
-            big=par.second;
-            clave_big=par.first;
-            mapita.erase(clave_big);
-        }
-    }
-    result+=big;
-}
-cout<<big;
+
 
 
 }

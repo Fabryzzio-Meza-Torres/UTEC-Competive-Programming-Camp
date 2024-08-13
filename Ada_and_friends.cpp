@@ -15,17 +15,16 @@ for(int i=0;i<Q;i++){
     cin>>name>>cost;
     mapita[name]+=cost;
 }
+
 for(int i=0;i<min(K,int(mapita.size()));i++){
     for(const auto& par: mapita){
         if(par.second>big){
             big=par.second;
             clave_big=par.first;
+            mapita.erase(clave_big);
         }
     }
-     result+=big;
-if(!clave_big.empty()){
-    mapita.erase(clave_big);
-}
+    result+=big;
 }
 cout<<big;
 

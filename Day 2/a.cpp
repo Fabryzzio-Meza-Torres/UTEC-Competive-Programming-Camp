@@ -11,9 +11,9 @@ using namespace std;
 typedef long long ll;
 typedef pair<int,int> ii;
 #define dforn(i,n) for(int i=n-1; i>=0; i--)
-#define dprint(v) cout << #v"=" << v << endl //;
-const int MAXN=100100;
+#define dprint(v) cout << #v"=" << v << endl //;)
 
+const int MAXN=100100;
 
 int binary_sex(vector<ll>& A, int X){
     ll a=0;
@@ -31,11 +31,11 @@ int binary_sex(vector<ll>& A, int X){
    
 }
 
-
-int main(){
-    std::ios_base::sync_with_stdio(false);
+int main() {
+    freopen("C:/Users/ASUS/OneDrive/Documentos/UTEC-Competive-Programming-Camp/Day 2/a.in", "r", stdin);
+    ios::sync_with_stdio(0);
     std::cin.tie(nullptr);
-
+    
     ll shops=0;
     cin>>shops;
     vector<ll>prices(shops);
@@ -51,5 +51,5 @@ int main(){
         cin>>money;
         cout<<binary_sex(prices,money)<<'\n';
         }
-
+    return 0;
 }

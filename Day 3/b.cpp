@@ -16,31 +16,27 @@ typedef pair<int,int> ii;
 const int MAXN=100100;
 ll n;
 
-ll magic_cuts(ll n,vector<ll> & cuts){
-    ll result=0;
-    for(int i=0;i<3;i++){ 
-        if(n>0 and n>=cuts[i]){
-            n-=cuts[i];
-            result++;
-        }
-    }
-    return result;
-}
+
 
 int main() {
-    // freopen("C:/Users/ASUS/OneDrive/Documentos/UTEC-Competive-Programming-Camp/Day 3/b.in", "r", stdin);
+    freopen("C:/Users/ASUS/OneDrive/Documentos/UTEC-Competive-Programming-Camp/Day 3/b.in", "r", stdin);
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
-    cin>>n;
-    vector<ll>cuts(3);
-   for(int i=0;i<3;i++){
-        cin>>cuts[i];
-   }
-   sort(cuts.begin(),cuts.end());
-   if(n>0){
-        cout<<magic_cuts(n,cuts);
-   }
+    ll n,a,b,c,ans=0;
+    while(cin>>n>>a>>b>>c){
+        for(int i=0;i*a<=n;i++){
+            for(int j=0;i*a+j*b<=n;j++){
+                ll zc=n-(i*a+j*b);
+                if(zc%c==0){
+                    ll z=zc/c;
+                    ans=max(ans,i+j+z);
+                }
+            }
+        }
+        cout<<ans<<'\n';
+    }
+    
 
     
     return 0;

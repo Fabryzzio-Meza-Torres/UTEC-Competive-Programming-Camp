@@ -21,54 +21,35 @@ int main() {
     // freopen("C:/Users/ASUS/OneDrive/Documentos/UTEC-Competive-Programming-Camp/Day 5/c.in", "r", stdin);
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
-    
+    int n=0,m=0,k=0;
     while(cin>>n>>m>>k){
-        vector<ll>nums(n);
-        vector<ll>max(n);
-        vector<ll>temp(n);
-        vector<ll>pos;
-        vector<ll>ans(0);
+    vector<pair<ll,ll>>pars(n);
+    vector<ll>pos(m*k);
 
-        forn(i,n){
-            cin>>nums[i];
-            max[i]=nums[i];
-            temp[i]=nums[i];
-        }
-        sort(max.begin(),max.end(),std::greater<int>());
-
-        forn(i,m*k){
-            ll v=max[i];
-            auto it=std::find(temp.begin(),temp.end(),max[i]);
-            if(it!=nums.end()){
-                int position=std::distance(temp.begin(),it);
-                pos.push_back(position);
-                temp[position]=0;
-            }
-        }
-
-        forn(i,pos.size()){
-            if(pos[i]!=nums.size()-1){
-               pos[i]+=1; 
-            }
-        }
-        ll sum=0;
-        forn(i,m*k){
-            sum+=max[i];
-        }
-        cout<<sum<<"\n";
-
-        int i=0;
-        while(ans.size()!=k-1){
-            if(pos[i]>=m){
-                ans.push_back(pos[i]);
-                cout<<pos[i]<<" ";
-                }
-            i++;
-        }
-
-
-
+     forn(i,n){
+        cin>>pars[i].first;
+        pars[i].second= i;
+     }
     
+    sort(pars.begin(),pars.end(),std::greater<pair<ll,ll>>());
+
+    ll sum=0;
+    forn(i,m*k){
+        sum+=pars[i].first;
+        pos[i]=pars[i].second;
+    }
+
+    cout<<sum<<'\n';
+    sort(pos.begin(),pos.end());
+
+    int count=0;
+    for(int i=m-1;i<pos.size();i+=m){
+        if(count==k-1){
+            break;
+        }
+        cout<<pos[i]+1<<' ';
+        count++;
     }
     return 0;
+}
 }

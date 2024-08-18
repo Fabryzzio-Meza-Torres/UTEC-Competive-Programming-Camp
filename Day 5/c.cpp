@@ -18,7 +18,7 @@ ll n=0,m=0,k=0;
 
 
 int main() {
-    freopen("C:/Users/ASUS/OneDrive/Documentos/UTEC-Competive-Programming-Camp/Day 5/c.in", "r", stdin);
+    // freopen("C:/Users/ASUS/OneDrive/Documentos/UTEC-Competive-Programming-Camp/Day 5/c.in", "r", stdin);
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
     
@@ -27,6 +27,7 @@ int main() {
         vector<ll>max(n);
         vector<ll>temp(n);
         vector<ll>pos;
+        vector<ll>ans(0);
 
         forn(i,n){
             cin>>nums[i];
@@ -44,8 +45,25 @@ int main() {
                 temp[position]=0;
             }
         }
-        for(int i=m;i<pos.size() - 1;i+=m){
-            cout<<pos[i]<<" ";
+
+        forn(i,pos.size()){
+            if(pos[i]!=nums.size()-1){
+               pos[i]+=1; 
+            }
+        }
+        ll sum=0;
+        forn(i,m*k){
+            sum+=max[i];
+        }
+        cout<<sum<<"\n";
+
+        int i=0;
+        while(ans.size()!=k-1){
+            if(pos[i]>=m){
+                ans.push_back(pos[i]);
+                cout<<pos[i]<<" ";
+                }
+            i++;
         }
 
 

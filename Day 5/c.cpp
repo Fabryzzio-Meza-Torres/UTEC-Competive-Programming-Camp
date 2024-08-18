@@ -44,7 +44,7 @@ int main() {
                 temp[position]=0;
             }
         }
-        for(int i=m-1;i<pos.size() - 1;i+=m){
+        for(int i=m;i<pos.size() - 1;i+=m){
             cout<<pos[i]<<" ";
         }
 
